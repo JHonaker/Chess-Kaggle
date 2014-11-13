@@ -9,3 +9,6 @@
 
 # RStudio files
 .Rproj.user/
+
+# Don't include the data, it's large
+Data/*
