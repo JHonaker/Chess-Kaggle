@@ -2,7 +2,7 @@ context("Move Parser")
 
 source("../../src/chessparse.R")
 
-test_that("parse.move handles invalid moves", {
+test_that("parse.move handles non-moves", {
     move_from_start <- function(move) parse.move(list(piece='a1'), move)
     warning_message <- "uci.move not valid"
 
@@ -11,6 +11,12 @@ test_that("parse.move handles invalid moves", {
     expect_warning(move_from_start(1),  warning_message)
     expect_warning(move_from_start("e2"), warning_message)
     expect_warning(move_from_start("z39"), warning_message)
+})
+
+test_that("parse.move recognizes invalid move", {
+    move_from <- function(move) parse.move(list(piece='a1'), move)
+
+    expect_warning(move_from('a2g2'), "no piece")
 })
 
 test_that("parse.move properly moves pieces", {
