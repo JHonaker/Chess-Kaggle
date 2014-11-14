@@ -8,6 +8,11 @@ parse.move <- function(position, uci.move) {
   src.square  <- substr(uci.move, 1, 2)
   dest.square <- substr(uci.move, 3, 4)
 
+  if (sum(position == src.square) <= 0) {
+    warning(paste("no piece at", src.square))
+    return(position)
+  }
+
   position[position == dest.square] <- 'X'
   position[position == src.square] <- dest.square
   position
