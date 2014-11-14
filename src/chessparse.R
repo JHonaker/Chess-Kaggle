@@ -1,3 +1,19 @@
+opening.pos <- c(mapply(paste0, letters[1:8], rep(1, 8)),
+                 mapply(paste0, letters[1:8], rep(2, 8)),
+                 mapply(paste0, letters[1:8], rep(7, 8)),
+                 mapply(paste0, letters[1:8], rep(8, 8)))
+
+opening.pos <- data.frame(t(opening.pos), stringsAsFactors=FALSE)
+
+names(opening.pos) <- c('WLrook', 'WLknight', 'WLbishop', 'Wqueen',
+                        'Wking', 'WRbishop', 'WRknight', 'WRrook',
+                        'a2pawn', 'b2pawn', 'c2pawn', 'd2pawn',
+                        'e2pawn', 'f2pawn', 'g2pawn', 'h2pawn',
+                        'a7pawn', 'b7pawn', 'c7pawn', 'd7pawn',
+                        'e7pawn', 'f7pawn', 'g7pawn', 'h7pawn',
+                        'BLrook', 'BLknight', 'BLbishop', 'Bqueen',
+                        'Bking', 'BRbishop', 'BRknight', 'BRrook')
+
 parse.move <- function(position, uci.move) {
   len <- nchar(uci.move)
   if (len != 4) {
