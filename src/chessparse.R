@@ -34,10 +34,21 @@ parse.move <- function(position, uci.move) {
   position
 }
 
-parse.game <- function(move.list) {
-  game <- opening.pos
-  for (i in 1:(length(move.list)-1))
-    game <- rbind(game, perform.move(game[i,], move.list[i]))
+parse.game <- function(move.list, start = opening.pos) {
+  game <- as.data.frame(start, stringsAsFactors=FALSE)
+
+    for (i in 1:(length(move.list))) {
+        move <- move.list[i]
+
+        if (move == '1-0')
+            attr(game, 'winner') <- "White"
+        else if (move == '0-1')
+            attr(game, 'winner') <- "Black"
+        else {
+            game <- rbind(game, parse.move(game[i,], move))
+        }
+
+    }
 
   rownames(game) <- c()
   game$turn <- 0:(nrow(game)-1)
