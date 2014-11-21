@@ -34,3 +34,7 @@ test_that("parse.move properly captures pieces", {
     expect_equal(move_from_pos("a1g8"), list(piece1="g8", piece2="X"))
     expect_equal(move_from_pos("g8a1"), list(piece1="X", piece2="a1"))
 })
+
+test_that("parse.move deals with castling", {
+
+})
