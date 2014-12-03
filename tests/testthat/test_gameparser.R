@@ -19,11 +19,3 @@ test_that("parse.game handles a non-terminal game", {
 
     expect_equal(result, test)
 })
-
-test_that("parse.game handles game continuation", {
-
-})
-
-test_that("parse.game handles game from beginning to end", {
-
-})
